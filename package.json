@@ -9,8 +9,8 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
-    "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
+    "jquery": "^3.7.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.55.0",
@@ -42,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "@types/react": "^19.1.2"
   }
 }
