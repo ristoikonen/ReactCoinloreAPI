@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { BitcoinWrapper } from './Bitcoin.styled';
+import CoinTicker from '../CoinTicker/CoinTicker';
 
 const DEFAULT_ID_BTC = "90"; // fetch Bitcoin by default
 const coinLoreAPIBaseUri = "https://api.coinlore.net/api/";
@@ -7,6 +8,7 @@ const coinLoreAPITickerUri = "ticker/?id=";
 
 let bitcoinPrice = "0"; // default value for price
 let isBitcoinUp = true; // default value for up/down
+let coinSymbol = "BTC"; // default value for symbol
 
 interface BitcoinProps { id?: string;}
 
@@ -18,6 +20,7 @@ interface ICoin {
    percent_change_1h?: string;
    percent_change_24h?: string;
  }
+
 
 // return price in US currency format as Coinlore's prices are in USD
  const formatUSCurrency = (amount: string): string => {
@@ -65,21 +68,23 @@ interface ICoin {
 
    bitcoinPrice = formatUSCurrency(data?.[0].price ?? "0");
    isBitcoinUp = parseFloat(data?.[0].percent_change_1h ?? "0") > 0;
-   console.log( parseFloat(data?.[0].percent_change_1h ?? "0") > 0);
+   coinSymbol = data?.[0].symbol ?? "";
    //const priceChange = isBitcoinUp ? "&#x25B2;" : "&#x25BC;";
    //const priceChangeColor = isBitcoinUp ? "green" : "red";
 
    return (
       <BitcoinWrapper>
          <div>
-            {data?.map((item) => (
-               <p id={item.symbol!}>{item.name!} in USD: {formatUSCurrency(item.price!)}</p>
+            {data?.map((item, index) => (
+               <p key={index}  id={item.symbol!}>{item.name!} in USD: {formatUSCurrency(item.price!)}</p>
             ))}
          </div>
+          <CoinTicker />
       </BitcoinWrapper>
+
    );
 };
 
 export default Bitcoin;
-export { bitcoinPrice, isBitcoinUp };
+export { bitcoinPrice, isBitcoinUp, coinSymbol };
 

@@ -5,7 +5,7 @@ import CoinTicker from './CoinTicker';
 
 describe('<CoinTicker />', () => {
   test('it should mount', () => {
-    render(<CoinTicker isCoinUp={true} text="BTC" />);
+    render(<CoinTicker />);
 
     const coinTicker = screen.getByTestId('CoinTicker');
 

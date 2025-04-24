@@ -4,7 +4,7 @@ const LazyCoinTicker = lazy(() => import('./CoinTicker'));
 
 const CoinTicker = (props: JSX.IntrinsicAttributes & { children?: React.ReactNode; }) => (
   <Suspense fallback={null}>
-    <LazyCoinTicker text={'BTC'} isCoinUp={false} {...props} />
+    <LazyCoinTicker {...props} />
   </Suspense>
 );
 
