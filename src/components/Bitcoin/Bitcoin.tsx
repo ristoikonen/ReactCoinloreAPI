@@ -74,12 +74,12 @@ interface ICoin {
 
    return (
       <BitcoinWrapper>
-         <div>
-            {data?.map((item, index) => (
+
+          {data?.map((item, index) => (
                <p key={index}  id={item.symbol!}>{item.name!} in USD: {formatUSCurrency(item.price!)}</p>
-            ))}
-         </div>
-          <CoinTicker />
+          ))}
+
+         <CoinTicker />
       </BitcoinWrapper>
 
    );

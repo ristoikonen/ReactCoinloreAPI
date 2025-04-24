@@ -1,6 +1,6 @@
 # ReactCoinloreAPI app
 
-Simple page shows Coinlore API's currency prices. Uses 'Bitcoin' -component.
+Simple page shows Coinlore API's currency prices. Uses my 'Bitcoin' -component.
 
 
 
@@ -17,12 +17,21 @@ import Bitcoin from './components/Bitcoin/Bitcoin';
 ```jsx
 <Bitcoin id='90'/>
 ```
+## Props
+
+
+|  prop  |    is    |         description         |                                  example                                  |
+| :----: | :------: | :-------------------------: | :-----------------------------------------------------------------------: |
+|  id   | string, required |   Id of Coinlore Ticker    | id='90' 
+
+ > Note: Data is fetched from Coinlore API: https://api.coinlore.net/api/ticker/?id=90
 
 ## CoinTicker Component
-Is a subcomponent of 'Bitcoin' -component, displays ticker tape animation of selected currency.
-Input data is from Bitcoin -comonent.
+I wrote it as a subcomponent of 'Bitcoin' -component. It displays ticker tape animation of selected currency.
+Input data is from Bitcoin -component.
 ## Usage
-Add CoinTicker -component to 'Bitcoin' -component 
+Add CoinTicker -component to 'Bitcoin' -component . 
+> Note: Remove Bitcoin -component's data mapping section if you want to display ticker only. Use BitconWrappers width -property to set CoinTicker's scroll width.
 
 ```jsx
 // Add import
@@ -32,23 +41,14 @@ import CoinTicker from '../CoinTicker/CoinTicker';
 <CoinTicker />
 ```
 
-CoinTicker output:
+CoinTicker's output:
 
 ```jsx
 BTC (▼)
 $93,396.43 USD
 ```
 
-## Props
 
-
-
-|  prop  |    is    |         description         |                                  example                                  |
-| :----: | :------: | :-------------------------: | :-----------------------------------------------------------------------: |
-|  id   | string, required |   Id of Coinlore Ticker    | id='90' 
-
-
- > Data is fetched from Coinlore API: https://api.coinlore.net/api/ticker/?id=90
 
 
 ## Source Code - Bitcoin.tsx

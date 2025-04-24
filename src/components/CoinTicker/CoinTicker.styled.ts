@@ -7,7 +7,7 @@ export const CoinTickerWrapper = styled.div`
 `;
 
 export const CoinTickerText = styled.em`
-  color: {scolor};
+  color: Beige;
   font-size: 1.2em;
   top: 3px;
   position: relative;
