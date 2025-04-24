@@ -1,9 +1,13 @@
 # ReactCoinloreAPI app
 
-Simple page shows Coinlore API's prices. Uses 'Bitcoin' -component.
+Simple page shows Coinlore API's currency prices. Uses 'Bitcoin' -component.
+
 
 
 ## Bitcoin Component
+
+Displays seleced currencys value in USD. Currency selection is by id -attribue.
+
 ## Usage
 
 ```jsx
@@ -13,6 +17,28 @@ import Bitcoin from './components/Bitcoin/Bitcoin';
 ```jsx
 <Bitcoin id='90'/>
 ```
+
+## CoinTicker Component
+Is a subcomponent of 'Bitcoin' -component, displays ticker tape animation of selected currency.
+Input data is from Bitcoin -comonent.
+## Usage
+Add CoinTicker -component to 'Bitcoin' -component 
+
+```jsx
+// Add import
+import CoinTicker from '../CoinTicker/CoinTicker';
+...
+// Add tag
+<CoinTicker />
+```
+
+CoinTicker output:
+
+```jsx
+BTC (▼)
+$93,396.43 USD
+```
+
 ## Props
 
 
@@ -22,23 +48,8 @@ import Bitcoin from './components/Bitcoin/Bitcoin';
 |  id   | string, required |   Id of Coinlore Ticker    | id='90' 
 
 
- > Data fetched from URI: https://api.coinlore.net/api/ticker/?id=90
+ > Data is fetched from Coinlore API: https://api.coinlore.net/api/ticker/?id=90
 
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
- > All tests are succesful!
 
 ## Source Code - Bitcoin.tsx
 ### Async Fetch of Coinlore API's JSON data, target defined by interface 'ICoin'
@@ -74,16 +85,31 @@ Launches the test runner in the interactive watch mode.\
 ```
 
 
-### Return style wrapped data, price formatted  as US-currency.
+### Return style wrapped data, price formatted as US-currency.
 
 ```jsx
 return (
       <BitcoinWrapper>
-         <div>
             {data?.map((item) => (
                <p id={item.symbol!}>{item.name!} in USD: {formatUSCurrency(item.price!)}</p>
             ))}
-         </div>
       </BitcoinWrapper>
    );
 ```
+
+
+## Useful Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.
+
+ > NOTE: All tests are succesful!
