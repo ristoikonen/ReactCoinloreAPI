@@ -8,30 +8,41 @@ Simple page shows Coinlore API's currency prices. Uses my 'Bitcoin' -component.
 
 Displays seleced currencys value in USD. Currency selection is by id -attribue.
 
+ > Note: Data is fetched from Coinlore API: https://api.coinlore.net/api/ticker/?id=90
+
 ## Usage
 
 ```jsx
 import Bitcoin from './components/Bitcoin/Bitcoin';
 ```
 
+To get Bitcoin
 ```jsx
-<Bitcoin id='90'/>
+<Bitcoin id='90' textwidth='480px'/>
 ```
+
+To get Ethereum
+```jsx
+<Bitcoin id='80' textwidth='480px'/>
+```
+
 ## Props
 
 
 |  prop  |    is    |         description         |                                  example                                  |
 | :----: | :------: | :-------------------------: | :-----------------------------------------------------------------------: |
-|  id   | string, required |   Id of Coinlore Ticker    | id='90' 
+|  id   | string, required |   Id of Coinlore Ticker API currency    | id='90' 
+|  textwidth   | string, default 480px |   Width of Bitcoin component    | textwidth='500px' 
 
- > Note: Data is fetched from Coinlore API: https://api.coinlore.net/api/ticker/?id=90
+
 
 ## CoinTicker Component
 I wrote it as a subcomponent of 'Bitcoin' -component. It displays ticker tape animation of selected currency.
-Input data is from Bitcoin -component.
+Input data is from Bitcoin -component. Bitcoin's 'textwidth' -property sets width of the scroll area.
+Main currencies display symbol icon from my Cloudinary storage.
 ## Usage
 Add CoinTicker -component to 'Bitcoin' -component . 
-> Note: Remove Bitcoin -component's data mapping section if you want to display ticker only. Use BitconWrappers width -property to set CoinTicker's scroll width.
+> Note: Remove Bitcoin -component's data mapping section if you want to display ticker only.  
 
 ```jsx
 // Add import
@@ -46,6 +57,7 @@ CoinTicker's output:
 ```jsx
 BTC (▼)
 $93,396.43 USD
+
 ```
 
 
@@ -60,6 +72,8 @@ $93,396.43 USD
    const [loading, setLoading] = useState<boolean>(true);
    const [error, setError] = useState<string | null>(null);
  
+   const txtwidth = !bprops.textwidth ? DEFAULT_TEXTWIDTH : bprops.textwidth;
+
    useEffect(() => {
      const fetchData = async () => {
        try {
@@ -89,7 +103,7 @@ $93,396.43 USD
 
 ```jsx
 return (
-      <BitcoinWrapper>
+      <BitcoinWrapper textwidth={txtwidth}>
             {data?.map((item) => (
                <p id={item.symbol!}>{item.name!} in USD: {formatUSCurrency(item.price!)}</p>
             ))}

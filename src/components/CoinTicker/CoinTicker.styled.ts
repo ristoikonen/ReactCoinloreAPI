@@ -6,6 +6,15 @@ export const CoinTickerWrapper = styled.div`
     overflow: hidden;
 `;
 
+
+export const AdvancedImageWrapper = styled.em`
+ position: relative;
+  padding:12px;
+  top: 8px;
+  margin-right: 7px;
+`;
+
+
 export const CoinTickerText = styled.em`
   color: Beige;
   font-size: 1.2em;

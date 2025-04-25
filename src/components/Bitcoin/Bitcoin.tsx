@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
+
 import { BitcoinWrapper } from './Bitcoin.styled';
 import CoinTicker from '../CoinTicker/CoinTicker';
 
@@ -6,11 +7,17 @@ const DEFAULT_ID_BTC = "90"; // fetch Bitcoin by default
 const coinLoreAPIBaseUri = "https://api.coinlore.net/api/";
 const coinLoreAPITickerUri = "ticker/?id=";
 
+
+let DEFAULT_TEXTWIDTH = "480px"; // default value for textwidth
 let bitcoinPrice = "0"; // default value for price
 let isBitcoinUp = true; // default value for up/down
 let coinSymbol = "BTC"; // default value for symbol
 
-interface BitcoinProps { id?: string;}
+
+interface BitcoinProps { 
+  id?: string;
+  textwidth?: string;
+}
 
 interface ICoin {
    id: number ;
@@ -34,7 +41,9 @@ interface ICoin {
    const [data, setData] = useState<ICoin[] | null>(null);
    const [loading, setLoading] = useState<boolean>(true);
    const [error, setError] = useState<string | null>(null);
- 
+
+   const txtwidth = !bprops.textwidth ? DEFAULT_TEXTWIDTH : bprops.textwidth;
+
    useEffect(() => {
      const fetchData = async () => {
        try {
@@ -52,6 +61,7 @@ interface ICoin {
             percent_change_1h: item.percent_change_1h ?? "0",
             percent_change_24h: item.percent_change_24h ?? "0",
          }));
+         
          setData(result);
        } catch (err) {
          setError((err as Error).message);
@@ -68,13 +78,13 @@ interface ICoin {
 
    bitcoinPrice = formatUSCurrency(data?.[0].price ?? "0");
    isBitcoinUp = parseFloat(data?.[0].percent_change_1h ?? "0") > 0;
-   coinSymbol = data?.[0].symbol ?? "";
+   coinSymbol = data?.[0].symbol ?? "BTC";
    //const priceChange = isBitcoinUp ? "&#x25B2;" : "&#x25BC;";
    //const priceChangeColor = isBitcoinUp ? "green" : "red";
 
    return (
-      <BitcoinWrapper>
-
+      <BitcoinWrapper textwidth={txtwidth}>
+        
           {data?.map((item, index) => (
                <p key={index}  id={item.symbol!}>{item.name!} in USD: {formatUSCurrency(item.price!)}</p>
           ))}
