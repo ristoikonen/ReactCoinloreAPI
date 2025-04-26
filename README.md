@@ -82,11 +82,11 @@ CoinTicker's output:
          const jsonData = await response.json();
          if (!jsonData) throw new Error("Coinlore API data error");
          //console.log(jsonData);
-         const result = jsonData.map((item: any) => ({
+         const result = jsonData.map((item: ICoin) => ({
            id: item.id,
            name: item.name ?? "",
            symbol: item.symbol ?? "",
-           price: item.price_usd ?? "0",
+           price_usd: item.price_usd ?? "0",
          }));
          setData(result);
        } catch (err) {
