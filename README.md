@@ -59,12 +59,6 @@ CoinTicker's output:
 
 ![CoinTicker](https://res.cloudinary.com/ddjpunfg4/image/upload/v1745632652/ticker.gif)
 
-```jsx
-BTC (▼)
-$93,396.43 USD
-
-```
-
 
 
 
