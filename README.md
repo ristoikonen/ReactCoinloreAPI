@@ -2,10 +2,11 @@
 
 Page shows selected currency price and movement, data from Coinlore API. Consists of my 'Bitcoin' and CoinTicker -components.
 
-See CoinTicker -component live here:
-> #### https://vite-react-pearl-sigma-30.vercel.app/
+**See CoinTicker -component online here:**
+> ### https://vite-react-pearl-sigma-30.vercel.app/
 
-Auto deployment from Github to Vercel, price refreshed every 30 seconds.
+Price refreshed every 30 seconds.
+Page has Vercel's analytics component. 
 
 ## Bitcoin Component
 

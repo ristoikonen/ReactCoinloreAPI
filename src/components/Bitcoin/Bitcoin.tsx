@@ -74,7 +74,7 @@ interface ICoin {
  
      fetchData();
 
-   }, [bprops]); // Runs only once on mount
+   }, []); 
  
    if (loading) return <p>Loading price...</p>;
    if (error) return <p>Error: {error}</p>;
@@ -89,7 +89,9 @@ interface ICoin {
    return (
       <BitcoinWrapper textwidth={txtwidth}>
         
-
+        {data?.map((item, index) => (
+               <p key={index}  id={item.symbol!}>{item.name!} {formatUSCurrency(item.price_usd!)} USD</p>
+          ))}
 
          <CoinTicker />
       </BitcoinWrapper>
