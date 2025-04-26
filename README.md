@@ -40,6 +40,9 @@ To get Ethereum
 I wrote it as a subcomponent of 'Bitcoin' -component. It displays ticker tape animation of selected currency.
 Input data is from Bitcoin -component. Bitcoin's 'textwidth' -property sets width of the scroll area.
 Main currencies display symbol icon from my Cloudinary storage.
+
+
+
 ## Usage
 Add CoinTicker -component to 'Bitcoin' -component . 
 > Note: Remove Bitcoin -component's data mapping section if you want to display ticker only.  
@@ -53,6 +56,8 @@ import CoinTicker from '../CoinTicker/CoinTicker';
 ```
 
 CoinTicker's output:
+
+![CoinTicker](https://res.cloudinary.com/ddjpunfg4/image/upload/v1745632652/ticker.gif)
 
 ```jsx
 BTC (▼)

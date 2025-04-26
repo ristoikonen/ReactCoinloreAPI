@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <code><Bitcoin id='80' textwidth='480px'/></code>
+        <code><Bitcoin id='90' textwidth='480px'/></code>
       </header>
       <br />
       <code>Data from api.coinlore.net</code>
